@@ -4,3 +4,9 @@ export const getAllProducts = async () => {
 
     return result.products
 }
+
+export const getProductById = async (idProduct) => {
+    const res = await fetch(`http://localhost:3002/products/${idProduct}`)
+    const result = await res.json()
+    return result.product
+}
