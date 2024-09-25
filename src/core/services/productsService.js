@@ -10,3 +10,32 @@ export const getProductById = async (idProduct) => {
     const result = await res.json()
     return result.product
 }
+
+
+export const modifyProduct = async(idProduct, newProductModification) => {
+    const res= await fetch(`http://localhost:3002/products/update/${idProduct}`, {
+        method: 'PATCH',
+        headers: {
+            'content-type': 'Application/json'
+        },
+        body: JSON.stringify(
+            {
+                ...newProductModification
+            }
+        )
+    })
+    const result = await res.json()
+    return result.updateProduct
+
+}
+
+export const deleteProduct = async(idProduct) => {
+    const res = await fetch(`http://localhost:3002/products/${idProduct}`, {
+        method: 'DELETE',
+        headers: {
+            'content-type' : 'Application/json'
+        },
+    })
+    const result = await res.json();
+    return result.products
+}

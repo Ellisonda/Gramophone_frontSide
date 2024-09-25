@@ -2,19 +2,33 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
 import { getAllProducts } from "../../core/services/productsService";
 import { loadProducts } from "./ProductActions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import './ProductListComponent.css'
 import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+
 
 const ProductsListComponent = () => {
 
     const dispatch = useDispatch();
     const products = useSelector((state)=>state.productReducer.products);
     const navigate= useNavigate();
+    const [show, setShow] = useState(false);
 
+
+
+    const goInfo = (idProduct, show) => {
+        navigate('/info',{
+            state: {
+                idProduct,
+                show
+            }
+        },
+        setShow(true)
+        )
+    }
 
     const loadProductList = async ()=> {
         const productsAux = await getAllProducts()
@@ -53,6 +67,8 @@ const ProductsListComponent = () => {
                                             </Card.Text>
                                             <Card.Footer>
                                                 <small className="text-muted">{p.estilo_musica}</small>
+                                                <button onClick={()=>goInfo(p._id)}>+ Info</button>
+                                                
                                             </Card.Footer>
                                         </Card.Body>
                                     </Card>
