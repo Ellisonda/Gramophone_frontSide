@@ -2,10 +2,9 @@
 import  { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom'
-import { loadProduct } from '../products/ProductActions';
-import { getProductById, modifyProduct } from '../../core/services/productsService';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import { loadProduct, loadProducts } from '../products/ProductActions';
+import { deleteProduct, getProductById, modifyProduct } from '../../core/services/productsService';
+
 
 const productInfoComponent = () => {
 
@@ -17,11 +16,13 @@ const productInfoComponent = () => {
     const [productInit, setProductInit] = useState(undefined);
     const [newProductModification, setNewProductModification]= useState();
     const [isEditing, setIsEditing] = useState(undefined);
-    const [show, setShow] = useState(true);
+
+    const user = useSelector((state)=> state.userReducer.user)
 
     const product = useSelector((state) => state.productReducer.product);
     const dispatch = useDispatch();
 
+    const userRole = user.role;
     console.log("product", product);
 
     const load = async () => {
@@ -62,6 +63,16 @@ const productInfoComponent = () => {
           [fieldName]: fieldValue,
         });
       };
+
+
+      //! 
+      const deleteProductHandler = async(idProduct) => {
+        await deleteProduct(idProduct)
+        console.log(`El festival ${product.nombre} ha sido borrado`)
+        // await loadProductList()
+        navigate('/home')
+        
+      }
     
 //?Navigates
 
@@ -112,18 +123,28 @@ useEffect(() => {
               justifyContent: "center",
             }}
           >
-            <button
-              style={{ fontWeight: "bold", textTransform: "uppercase" }}
-              onClick={() => setIsEditing(true)}
-            >
-              Modificar datos del festival
-            </button>
+            {
+            userRole === 'admin' &&  
+            <div>
+                <button
+                  style={{ fontWeight: "bold", textTransform: "uppercase" }}
+                  onClick={() => setIsEditing(true)}
+                >
+                  Modificar datos del festival
+                </button>
+                <button  style={{ fontWeight: "bold", textTransform: "uppercase" }}
+                  onClick={() => deleteProductHandler(product._id)}>Eliminar</button>
+
+            </div>
+            }
+            
             <button
               onClick={goHomePage}
               style={{ fontWeight: "bold", textTransform: "uppercase" }}
             >
               Volver
             </button>
+            
           </div>
         </div>
 
@@ -140,6 +161,7 @@ useEffect(() => {
             >
               <button onClick={saveHandler}>Guardar</button>
               <button onClick={cancelHandler}>Cancelar</button>
+              {/* {userRole === 'admin' && (<div> <button onClick={deleteProductHandler}>Eliminar</button></div>)} */}
             </div>
           </>
         )}
@@ -191,8 +213,8 @@ useEffect(() => {
                 </span>
                 {isEditing ? (
                   <input
-                    type="number"
-                    name="precio"
+                    type="text"
+                    name="estilo_musica"
                     onChange={(e) =>
                       productModificationHandler(e.target.name, e.target.value)
                     }
@@ -235,6 +257,25 @@ useEffect(() => {
                     {product.descripcion}
                   </span>
                 )}
+              </div>
+              <div>
+                {
+                    isEditing ? (
+                        <div>
+                            <span style={{ fontWeight: "bold", fontSize: 24 }}>
+                            Imagen:
+                        </span>
+                        <input
+                          type="text"
+                          
+                          name="url_imagen_localidad"
+                          onChange={(e) =>
+                            productModificationHandler(e.target.name, e.target.value)
+                          }/>
+                        </div>
+                        
+                      ) : ('')
+                }
               </div>
               <div>
                 <span style={{ fontWeight: "bold", fontSize: 24 }}>Id:</span>

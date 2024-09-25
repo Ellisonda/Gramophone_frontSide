@@ -54,6 +54,28 @@ export const registerNewUser = async (newUser) => {
         
     }
     
+}
 
+export const getUserInfoById = async (idUser) => {
+    const res = await fetch(`http://localhost:3002/user/${idUser}`)
+    const result = await res.json()
+    return result.user
+}
+
+
+export const modifyUser = async(idUser, newProfileModification) => {
+    const res = await fetch(`http://localhost:3002/user/update/${idUser}`, {
+        method: 'PATCH',
+        headers: {
+            'content-type': 'Application/json'
+        },
+        body: JSON.stringify(
+            {
+                ...newProfileModification
+            }
+        )
+    })
+    const result = await res.json()
+    return result.userModified
 
 }

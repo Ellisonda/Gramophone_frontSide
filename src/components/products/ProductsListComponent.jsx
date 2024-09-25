@@ -7,27 +7,30 @@ import './ProductListComponent.css'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
 
 
 const ProductsListComponent = () => {
 
     const dispatch = useDispatch();
     const products = useSelector((state)=>state.productReducer.products);
+    const user = useSelector((state)=> state.userReducer.user)
     const navigate= useNavigate();
-    const [show, setShow] = useState(false);
+    
 
-
-
-    const goInfo = (idProduct, show) => {
+   
+    const userRole = user.role;
+    const goInfo = (idProduct,) => {
         navigate('/info',{
             state: {
                 idProduct,
-                show
+                
             }
         },
-        setShow(true)
+            console.log(user.role)
         )
+    }
+    const goCreation = () => {
+        navigate('/creation')
     }
 
     const loadProductList = async ()=> {
@@ -42,6 +45,7 @@ const ProductsListComponent = () => {
 
     useEffect(()=> {
         loadProductList()
+        
     },[])
 
   return (
@@ -53,13 +57,18 @@ const ProductsListComponent = () => {
             {
                 !products ? <div>Cargando festivales...</div>
                 : (
+                    <>
+                    
+                        {userRole === 'admin' && (<div> <button onClick={goCreation}>Introducir festival</button></div>)}
+                    
+                    
                     <Row xs={1} md={2} lg={4} className="cardProduct-container g-5 p-5">
         {/* //? He importado cardgroup y card desde la libreria de react-bootstrap */}
                         {
                             products.map((p, idx)=> (
                                 <Col key={idx}>
                                     <Card >
-                                        <Card.Img variant="top" src="https://fastly.picsum.photos/id/158/4836/3224.jpg?hmac=Gu_3j3HxZgR74iw1sV0wcwlnSZSeCi7zDWLcjblOp_c" />
+                                        <Card.Img variant="top" src={p.url_imagen_localidad} />
                                         <Card.Body>
                                             <Card.Title>{p.nombre}</Card.Title>
                                             <Card.Text>
@@ -69,6 +78,7 @@ const ProductsListComponent = () => {
                                                 <small className="text-muted">{p.estilo_musica}</small>
                                                 <button onClick={()=>goInfo(p._id)}>+ Info</button>
                                                 
+                                                
                                             </Card.Footer>
                                         </Card.Body>
                                     </Card>
@@ -76,7 +86,7 @@ const ProductsListComponent = () => {
                             ))
                         }
                         </Row>
-                    
+                        </>
                 )
             }
         </div>

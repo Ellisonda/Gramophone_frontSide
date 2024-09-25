@@ -39,3 +39,17 @@ export const deleteProduct = async(idProduct) => {
     const result = await res.json();
     return result.products
 }
+
+export const createNewProduct = async (newProduct) => {
+    const res = await fetch('http://localhost:3002/products/addProduct', {
+        method: 'POST', 
+        headers: {
+            'content-type' : 'Application/json'
+        },
+        body: JSON.stringify({
+            ...newProduct
+        })
+    })
+    const result = await res.json()
+    return result.products
+}
