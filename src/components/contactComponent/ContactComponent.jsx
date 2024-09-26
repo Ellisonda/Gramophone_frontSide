@@ -35,7 +35,7 @@ const ContactComponent = () => {
                 <Button >Suscribete</Button> */}
                 <span>Email</span>
                 <input type="text" name='email' onChange={(e)=>newMailHandler(e.target.name, e.target.value)}></input>
-                <button onClick={newSuscriptionHandler}></button>
+                <button onClick={newSuscriptionHandler}>Follow us</button>
             </div>
         </div>
         <div className='logo-newsletter'>

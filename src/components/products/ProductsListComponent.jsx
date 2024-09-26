@@ -14,6 +14,8 @@ const ProductsListComponent = () => {
     const dispatch = useDispatch();
     const products = useSelector((state)=>state.productReducer.products);
     const user = useSelector((state)=> state.userReducer.user)
+    const [productsFiltered, setProductsFiltered] = useState()
+    const [searchInfo, setSearchInfo] = useState();
     const navigate= useNavigate();
     
 
@@ -42,6 +44,42 @@ const ProductsListComponent = () => {
             })
         )
     }
+//? Buscador con filtro
+
+const filter = (nombre, localidad, estilo_musica) => {
+    const productsFilteredAux = products.filter(p => (p.nombre.toLowerCase().includes(nombre) || p.localidad.toLowerCase().includes(localidad) || p.estilo_musica.toLowerCase().includes(estilo_musica)) )
+    setProductsFiltered(productsFilteredAux)
+}
+const searchStyle = () => {
+
+}
+
+const searchHandler = () => {
+    setSearchInfo({
+        ...searchInfo,
+        [name]: value
+    })
+}
+
+//!BORRAR const doLogin = async () => {
+//     const userInfo = await loginFetch(loginInfo.email, loginInfo.password)
+//     dispatch(doLoginActions({
+//         user: userInfo
+//     }))
+//     console.log('Usuario logeado')
+// }
+// !BORARconst handlerLoginInfo = (name, value) => {
+//     setLoginInfo({
+//         ...loginInfo,
+//         [name]: value
+//     })
+// }
+
+useEffect(() => {
+    setProductsFiltered(products)
+},[products])
+
+//?
 
     useEffect(()=> {
         loadProductList()
@@ -53,6 +91,12 @@ const ProductsListComponent = () => {
         <div className="productList-header">
             <h3>Aquí te listamos los mejores festivales de musica a lo largo y ancho del mundo:</h3>
         </div>
+        {/*  */}
+        <div>
+                <span>Buscar: </span>
+                <input type="text" onChange={(e) => searchStyle(e.target.value)}/>
+            </div>
+            {/*  */}
         <div>
             {
                 !products ? <div>Cargando festivales...</div>

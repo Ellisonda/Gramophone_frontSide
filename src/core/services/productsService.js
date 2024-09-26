@@ -53,3 +53,20 @@ export const createNewProduct = async (newProduct) => {
     const result = await res.json()
     return result.products
 }
+
+
+//Fetch for searche with filter
+
+// export const getFilteredProducts = async (value) => {
+//     const res = await fetch('http://localhost:3002/products')
+//     const result= await res.json()
+//     const productsFiltered= result.products.estilo_musica === value
+//     return productsFiltered
+// }
+
+
+export const getProductByStyle = async (musicStyle) => {
+    const res= await fetch(`http://localhost:3002/products/musicStyle/${musicStyle}`);
+    const result = await res.json()
+    return result.products
+}
