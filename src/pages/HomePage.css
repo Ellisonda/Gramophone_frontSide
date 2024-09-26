@@ -1,3 +1,36 @@
 header {
     background-color: #E45826;
+    max-width: 100%;
+
+}
+
+
+.newsletter-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    height: 70vh;
+    width: 100%;
+    max-width: 100%;
+
+    background-color: #4A4947;
+    padding: 4rem;
+    /* margin: 0; */
+    justify-content: space-around;
+    align-items: center;
+}
+.text-newsletter {
+    max-width: 50%;
+    
+    color: #FFF5E4;
+}
+.logo-newsletter {
+    background-image: url(../assets/images/Gramophone_Line.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* max-width: 100%; */
+    /* min-width: 100px; */
+    width: 45rem;
+    height: 20rem;
 }

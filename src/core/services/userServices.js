@@ -79,3 +79,18 @@ export const modifyUser = async(idUser, newProfileModification) => {
     return result.userModified
 
 }
+
+export const addNewMail = async (newMail) => {
+    const res = await fetch('http://localhost:3002/user/addMail', {
+        method: 'POST', 
+        headers: {
+            'content-type' : 'Application/json'
+        },
+        body: JSON.stringify({
+            ...newMail
+        })
+    })
+    console.log('Se ha registrado  un nuevo mail en la base de datos', newMail)
+    const result = await res.json()
+    return result.mail
+}

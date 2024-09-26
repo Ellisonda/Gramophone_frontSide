@@ -4,5 +4,6 @@
 }
 .cardProduct-container {
     padding: 7rem !important;
+    max-width: 100%;
     background-color: #F0A500 !important;
 }

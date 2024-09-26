@@ -1,3 +1,4 @@
+import ContactComponent from "../components/contactComponent/ContactComponent"
 import NavbarComponent from "../components/navbar/NavbarComponent"
 import ProductsListComponent from "../components/products/ProductsListComponent"
 import './Homepage.css'
@@ -13,6 +14,9 @@ const HomePage = () => {
       <main>
         <ProductsListComponent/>
       </main>
+      <footer>
+        <ContactComponent/>
+      </footer>
     </div>
   )
 }
