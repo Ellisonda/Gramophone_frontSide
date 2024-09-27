@@ -17,13 +17,13 @@ export const loginFetch = async (email, password) => {
         console.log(data)
         // return data.user;
 
-        // if(data){
-        //     localStorage.setItem('token', data.token);
-        //     localStorage.setItem('token_refresh', data.token_refresh);
-        //     localStorage.setItem('idUser', data.user._id);
+        if(data){
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('token_refresh', data.token_refresh);
+            localStorage.setItem('idUser', data.user._id);
 
-        //     console.log(`User with email ${email} has been logged correctly`);
-        // }
+            console.log(`User with email ${email} has been logged correctly`);
+        }
         return data.user;
     } catch (error) {
         console.error("Something went wrong at login: ", error)

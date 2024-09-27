@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import Gramophone from '../../assets/images/Gramophone_name.png'
+
+//REACT BOOTSTRAP import
+
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 const NavbarComponent = () => {
   const navigate = useNavigate();
@@ -18,9 +25,13 @@ const NavbarComponent = () => {
     )
 }
 
+const goLogOut = () => {
+  navigate('/')
+}
+
   return (
     <div>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        {/* <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid d-flex flex-row">
                 <a className="navbar-brand" href="#">Gramophone</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,11 +50,41 @@ const NavbarComponent = () => {
                     <li className="nav-item">
                     <a  className="nav-link" href="#">Contact</a>
                     </li>
-                    
+                    <li className="nav-item">
+                    <a  className="nav-link" href="/" >Log out</a>
+                    </li>
                 </ul>
                 </div>
             </div>
-        </nav>
+        </nav> */}
+
+<Navbar collapseOnSelect fixed="top" expand="lg" className="bg-body-tertiary ">
+      <Container className="navbar-container">
+        <Navbar.Brand href="#hero-banner">
+          <img src={Gramophone} width="20"
+              height="20"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"/>
+          </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav" style={{justifyContent:'flex-end'}}>
+          <Nav >
+            <Nav.Link href="#hero-banner">Home</Nav.Link>
+            <Nav.Link href="#contact-area">Contact</Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link href="#deets" style={{color:'green'}}>@{user.name}</Nav.Link>
+            
+            <Nav.Link eventKey={2} href="/">
+              Log out
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
+
+
     </div>
   )
 }

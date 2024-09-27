@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom'
 import { loadProduct, loadProducts } from '../products/ProductActions';
 import { deleteProduct, getProductById, modifyProduct } from '../../core/services/productsService';
+import '../products/ProductListComponent.css'
+import Container from 'react-bootstrap/esm/Container';
+import Card from 'react-bootstrap/Card';
 
 
 const productInfoComponent = () => {
@@ -84,220 +87,394 @@ useEffect(() => {
 }, []);
 
   return (
-    <div>
+
+
+
+    <Container className='info-maincontainer'>
         
 
-      {/* { <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        dialogClassName="modal-90w"
-        aria-labelledby="example-custom-modal-styling-title"
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="example-custom-modal-styling-title">
-            <h2>{product.nombre}</h2>
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-            <h4>{product.localidad}</h4>
-            <p>{product.estilo_musica}</p>
-          <p>
-            {product.descripcion}
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-            <q>{product.precio_entrada}€</q>
-        </Modal.Footer>
-      </Modal>  */
-      
-      <div>
-      <div>
-          <h3 style={{ fontWeight: "bold", textTransform: "uppercase" }}>
-            Información sobre el festival
-          </h3>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              gap: 5,
-              justifyContent: "center",
-            }}
-          >
-            {
-            userRole === 'admin' &&  
-            <div>
-                <button
-                  style={{ fontWeight: "bold", textTransform: "uppercase" }}
-                  onClick={() => setIsEditing(true)}
-                >
-                  Modificar datos del festival
-                </button>
-                <button  style={{ fontWeight: "bold", textTransform: "uppercase" }}
-                  onClick={() => deleteProductHandler(product._id)}>Eliminar</button>
+      {
 
-            </div>
-            }
-            
-            <button
-              onClick={goHomePage}
-              style={{ fontWeight: "bold", textTransform: "uppercase" }}
-            >
-              Volver
-            </button>
-            
-          </div>
-        </div>
-
-        {isEditing && (
-          <>
+        <Card>
+            {/* <Card.Header>Información sobre el festival</Card.Header> */}
+            <Card.Body>
+            <div >
+        <div>
+            <h3 style={{ fontWeight: "bold", textTransform: "uppercase" }}>
+                Información sobre el festival
+            </h3>
             <div
-              style={{
-                marginTop: 5,
+                style={{
                 display: "flex",
                 flexDirection: "row",
                 gap: 5,
                 justifyContent: "center",
-              }}
+                }}
             >
-              <button onClick={saveHandler}>Guardar</button>
-              <button onClick={cancelHandler}>Cancelar</button>
-              {/* {userRole === 'admin' && (<div> <button onClick={deleteProductHandler}>Eliminar</button></div>)} */}
-            </div>
-          </>
-        )}
-
-        <div>
-          {!product ? (
-            <div>Loading...</div>
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "start",
-              }}
-            >
-              <div>
-                <span style={{ fontWeight: "bold", fontSize: 24 }}>
-                  Nombre:{" "}
-                </span>
-                {isEditing ? (
-                  <input
-                    type="text"
-                    name="nombre"
-                    onChange={(e) =>
-                      productModificationHandler(e.target.name, e.target.value)
-                    }
-                  />
-                ) : (
-                  <span style={{ color: "#CA5D35" }}> {product.nombre}</span>
-                )}
-              </div>
-              <div>
-                <span style={{ fontWeight: "bold", fontSize: 24 }}>El sitio:</span>
-                {isEditing ? (
-                  <input
-                    type="text"
-                    name="tipo"
-                    onChange={(e) =>
-                      productModificationHandler(e.target.name, e.target.value)
-                    }
-                  />
-                ) : (
-                  <span style={{ color: "#CA5D35" }}> {product.localidad}</span>
-                )}
-              </div>
-              <div>
-                <span style={{ fontWeight: "bold", fontSize: 24 }}>
-                  Estilo de música:
-                </span>
-                {isEditing ? (
-                  <input
-                    type="text"
-                    name="estilo_musica"
-                    onChange={(e) =>
-                      productModificationHandler(e.target.name, e.target.value)
-                    }
-                  />
-                ) : (
-                  <span style={{ color: "#CA5D35" }}> {product.estilo_musica}</span>
-                )}
-              </div>
-              <div>
-                <span style={{ fontWeight: "bold", fontSize: 24 }}>
-                  Precio:
-                </span>
-                {isEditing ? (
-                  <input
-                    type="number"
-                    name="precio"
-                    onChange={(e) =>
-                      productModificationHandler(e.target.name, e.target.value)
-                    }
-                  />
-                ) : (
-                  <span style={{ color: "#CA5D35" }}> {product.precio_entrada}</span>
-                )}
-              </div>
-              <div>
-                <span style={{ fontWeight: "bold", fontSize: 24 }}>
-                  Descripcion:
-                </span>
-                {isEditing ? (
-                  <input
-                    type="text"
-                    name="descripcion"
-                    onChange={(e) =>
-                      productModificationHandler(e.target.name, e.target.value)
-                    }
-                  />
-                ) : (
-                  <span style={{ color: "#CA5D35" }}>
-                    {" "}
-                    {product.descripcion}
-                  </span>
-                )}
-              </div>
-              <div>
                 {
-                    isEditing ? (
-                        <div>
-                            <span style={{ fontWeight: "bold", fontSize: 24 }}>
-                            Imagen:
-                        </span>
-                        <input
-                          type="text"
-                          
-                          name="url_imagen_localidad"
-                          onChange={(e) =>
-                            productModificationHandler(e.target.name, e.target.value)
-                          }/>
-                        </div>
-                        
-                      ) : ('')
+                userRole === 'admin' &&  
+                <div>
+                    <button
+                    style={{ fontWeight: "bold", textTransform: "uppercase" }}
+                    onClick={() => setIsEditing(true)}
+                    >
+                    Modificar datos del festival
+                    </button>
+                    <button  style={{ fontWeight: "bold", textTransform: "uppercase" }}
+                    onClick={() => deleteProductHandler(product._id)}>Eliminar</button>
+
+                </div>
                 }
-              </div>
-              <div>
-                <span style={{ fontWeight: "bold", fontSize: 24 }}>Id:</span>
-                {isEditing ? (
-                  <input
-                    type="number"
-                    value={product._id}
-                    name="_id"
-                    disabled
-                  />
-                ) : (
-                  <span style={{ color: "#CA5D35" }}> {product._id}</span>
-                )}
-              </div>
+                
+                <button
+                onClick={goHomePage}
+                style={{ fontWeight: "bold", textTransform: "uppercase" }}
+                >
+                Volver
+                </button>
+                
             </div>
-          )}
+            </div>
+
+            {isEditing && (
+            <>
+                <div
+                style={{
+                    marginTop: 5,
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: 5,
+                    justifyContent: "center",
+                }}
+                >
+                <button onClick={saveHandler}>Guardar</button>
+                <button onClick={cancelHandler}>Cancelar</button>
+                {/* {userRole === 'admin' && (<div> <button onClick={deleteProductHandler}>Eliminar</button></div>)} */}
+                </div>
+            </>
+            )}
+
+            <div>
+            {!product ? (
+                <div>Loading...</div>
+            ) : (
+                <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "start",
+                }}
+                >
+                <div>
+                    <span style={{ fontWeight: "bold", fontSize: 24 }}>
+                    Nombre:{" "}
+                    </span>
+                    {isEditing ? (
+                    <input
+                        type="text"
+                        name="nombre"
+                        onChange={(e) =>
+                        productModificationHandler(e.target.name, e.target.value)
+                        }
+                    />
+                    ) : (
+                    <span style={{ color: "#CA5D35" }}> {product.nombre}</span>
+                    )}
+                </div>
+                <div>
+                    <span style={{ fontWeight: "bold", fontSize: 24 }}>El sitio:</span>
+                    {isEditing ? (
+                    <input
+                        type="text"
+                        name="tipo"
+                        onChange={(e) =>
+                        productModificationHandler(e.target.name, e.target.value)
+                        }
+                    />
+                    ) : (
+                    <span style={{ color: "#CA5D35" }}> {product.localidad}</span>
+                    )}
+                </div>
+                <div>
+                    <span style={{ fontWeight: "bold", fontSize: 24 }}>
+                    Estilo de música:
+                    </span>
+                    {isEditing ? (
+                    <input
+                        type="text"
+                        name="estilo_musica"
+                        onChange={(e) =>
+                        productModificationHandler(e.target.name, e.target.value)
+                        }
+                    />
+                    ) : (
+                    <span style={{ color: "#CA5D35" }}> {product.estilo_musica}</span>
+                    )}
+                </div>
+                <div>
+                    <span style={{ fontWeight: "bold", fontSize: 24 }}>
+                    Precio:
+                    </span>
+                    {isEditing ? (
+                    <input
+                        type="number"
+                        name="precio"
+                        onChange={(e) =>
+                        productModificationHandler(e.target.name, e.target.value)
+                        }
+                    />
+                    ) : (
+                    <span style={{ color: "#CA5D35" }}> {product.precio_entrada}</span>
+                    )}
+                </div>
+                <div>
+                    <span style={{ fontWeight: "bold", fontSize: 24 }}>
+                    Descripcion:
+                    </span>
+                    {isEditing ? (
+                    <input
+                        type="text"
+                        name="descripcion"
+                        onChange={(e) =>
+                        productModificationHandler(e.target.name, e.target.value)
+                        }
+                    />
+                    ) : (
+                    <span style={{ color: "#CA5D35" }}>
+                        {" "}
+                        {product.descripcion}
+                    </span>
+                    )}
+                </div>
+                <div>
+                    {
+                        isEditing ? (
+                            <div>
+                                <span style={{ fontWeight: "bold", fontSize: 24 }}>
+                                Imagen:
+                            </span>
+                            <input
+                            type="text"
+                            
+                            name="url_imagen_localidad"
+                            onChange={(e) =>
+                                productModificationHandler(e.target.name, e.target.value)
+                            }/>
+                            </div>
+                            
+                        ) : ('')
+                    }
+                </div>
+                <div>
+                    <span style={{ fontWeight: "bold", fontSize: 24 }}>Id:</span>
+                    {isEditing ? (
+                    <input
+                        type="number"
+                        value={product._id}
+                        name="_id"
+                        disabled
+                    />
+                    ) : (
+                    <span style={{ color: "#CA5D35" }}> {product._id}</span>
+                    )}
+                </div>
+                </div>
+            )}
+            </div>
+        
+        
         </div>
+            </Card.Body>
+        </Card>
       
-      
-     </div>
+    //   <div >
+    //     <div>
+    //         <h3 style={{ fontWeight: "bold", textTransform: "uppercase" }}>
+    //             Información sobre el festival
+    //         </h3>
+    //         <div
+    //             style={{
+    //             display: "flex",
+    //             flexDirection: "row",
+    //             gap: 5,
+    //             justifyContent: "center",
+    //             }}
+    //         >
+    //             {
+    //             userRole === 'admin' &&  
+    //             <div>
+    //                 <button
+    //                 style={{ fontWeight: "bold", textTransform: "uppercase" }}
+    //                 onClick={() => setIsEditing(true)}
+    //                 >
+    //                 Modificar datos del festival
+    //                 </button>
+    //                 <button  style={{ fontWeight: "bold", textTransform: "uppercase" }}
+    //                 onClick={() => deleteProductHandler(product._id)}>Eliminar</button>
+
+    //             </div>
+    //             }
+                
+    //             <button
+    //             onClick={goHomePage}
+    //             style={{ fontWeight: "bold", textTransform: "uppercase" }}
+    //             >
+    //             Volver
+    //             </button>
+                
+    //         </div>
+    //         </div>
+
+    //         {isEditing && (
+    //         <>
+    //             <div
+    //             style={{
+    //                 marginTop: 5,
+    //                 display: "flex",
+    //                 flexDirection: "row",
+    //                 gap: 5,
+    //                 justifyContent: "center",
+    //             }}
+    //             >
+    //             <button onClick={saveHandler}>Guardar</button>
+    //             <button onClick={cancelHandler}>Cancelar</button>
+    //             {/* {userRole === 'admin' && (<div> <button onClick={deleteProductHandler}>Eliminar</button></div>)} */}
+    //             </div>
+    //         </>
+    //         )}
+
+    //         <div>
+    //         {!product ? (
+    //             <div>Loading...</div>
+    //         ) : (
+    //             <div
+    //             style={{
+    //                 display: "flex",
+    //                 flexDirection: "column",
+    //                 alignItems: "start",
+    //             }}
+    //             >
+    //             <div>
+    //                 <span style={{ fontWeight: "bold", fontSize: 24 }}>
+    //                 Nombre:{" "}
+    //                 </span>
+    //                 {isEditing ? (
+    //                 <input
+    //                     type="text"
+    //                     name="nombre"
+    //                     onChange={(e) =>
+    //                     productModificationHandler(e.target.name, e.target.value)
+    //                     }
+    //                 />
+    //                 ) : (
+    //                 <span style={{ color: "#CA5D35" }}> {product.nombre}</span>
+    //                 )}
+    //             </div>
+    //             <div>
+    //                 <span style={{ fontWeight: "bold", fontSize: 24 }}>El sitio:</span>
+    //                 {isEditing ? (
+    //                 <input
+    //                     type="text"
+    //                     name="tipo"
+    //                     onChange={(e) =>
+    //                     productModificationHandler(e.target.name, e.target.value)
+    //                     }
+    //                 />
+    //                 ) : (
+    //                 <span style={{ color: "#CA5D35" }}> {product.localidad}</span>
+    //                 )}
+    //             </div>
+    //             <div>
+    //                 <span style={{ fontWeight: "bold", fontSize: 24 }}>
+    //                 Estilo de música:
+    //                 </span>
+    //                 {isEditing ? (
+    //                 <input
+    //                     type="text"
+    //                     name="estilo_musica"
+    //                     onChange={(e) =>
+    //                     productModificationHandler(e.target.name, e.target.value)
+    //                     }
+    //                 />
+    //                 ) : (
+    //                 <span style={{ color: "#CA5D35" }}> {product.estilo_musica}</span>
+    //                 )}
+    //             </div>
+    //             <div>
+    //                 <span style={{ fontWeight: "bold", fontSize: 24 }}>
+    //                 Precio:
+    //                 </span>
+    //                 {isEditing ? (
+    //                 <input
+    //                     type="number"
+    //                     name="precio"
+    //                     onChange={(e) =>
+    //                     productModificationHandler(e.target.name, e.target.value)
+    //                     }
+    //                 />
+    //                 ) : (
+    //                 <span style={{ color: "#CA5D35" }}> {product.precio_entrada}</span>
+    //                 )}
+    //             </div>
+    //             <div>
+    //                 <span style={{ fontWeight: "bold", fontSize: 24 }}>
+    //                 Descripcion:
+    //                 </span>
+    //                 {isEditing ? (
+    //                 <input
+    //                     type="text"
+    //                     name="descripcion"
+    //                     onChange={(e) =>
+    //                     productModificationHandler(e.target.name, e.target.value)
+    //                     }
+    //                 />
+    //                 ) : (
+    //                 <span style={{ color: "#CA5D35" }}>
+    //                     {" "}
+    //                     {product.descripcion}
+    //                 </span>
+    //                 )}
+    //             </div>
+    //             <div>
+    //                 {
+    //                     isEditing ? (
+    //                         <div>
+    //                             <span style={{ fontWeight: "bold", fontSize: 24 }}>
+    //                             Imagen:
+    //                         </span>
+    //                         <input
+    //                         type="text"
+                            
+    //                         name="url_imagen_localidad"
+    //                         onChange={(e) =>
+    //                             productModificationHandler(e.target.name, e.target.value)
+    //                         }/>
+    //                         </div>
+                            
+    //                     ) : ('')
+    //                 }
+    //             </div>
+    //             <div>
+    //                 <span style={{ fontWeight: "bold", fontSize: 24 }}>Id:</span>
+    //                 {isEditing ? (
+    //                 <input
+    //                     type="number"
+    //                     value={product._id}
+    //                     name="_id"
+    //                     disabled
+    //                 />
+    //                 ) : (
+    //                 <span style={{ color: "#CA5D35" }}> {product._id}</span>
+    //                 )}
+    //             </div>
+    //             </div>
+    //         )}
+    //         </div>
+        
+        
+    //     </div>
       }
-</div>
+</Container>
   )
 }
 

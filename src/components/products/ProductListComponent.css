@@ -1,9 +1,90 @@
 
 .productList-header {
-    background-color: cadetblue;
+    background-color: var(--banner-bg-color);
+
+    .hero-banner {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100vh;
+        margin: 2rem;
+        justify-content: center;
+        align-items: center;
+        .text-banner {
+            width: 100vh;
+            display: flex;
+        /* align-items: start; */
+            
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            h2 {
+                font-size: 3rem !important;
+            }
+            span {
+                color: var(--logo-bg-color);
+            }
+        }
+        .img-banner {
+            background-image: url('../../assets/images/Gramophone_reno_solo.png');
+            background-position: 80%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position-y: 50%;
+            width: 30%;
+            height: 60vh;
+        }
+    }
+
+    .search-create-panel {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 10px;
+        align-items: center;
+        padding-right: 2%;
+        padding-top: 2%;
+        background-color: var(--products-bg-color);
+    }
+
 }
 .cardProduct-container {
-    padding: 7rem !important;
-    max-width: 100%;
-    background-color: #F0A500 !important;
-}
+    padding: 20rem !important;
+    /* max-width: 100%; */
+    background-color: #FFF9C9 !important;
+    font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+    }
+
+    
+    .info-maincontainer {
+        /* background-color: #F5CCA0; */
+        width: 100vh;
+        /* height: 100vh; */
+        font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+    }
+
+
+    .cardProduct-maincontainer {
+        display: grid !important;
+        margin: 0 auto;
+        display: grid;
+        gap: 4rem;
+        justify-items: center;
+        max-width: fit-content;
+        /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    }
+    @media (min-width: 400px) {
+        .cardProduct-maincontainer { grid-template-columns: repeat(1, 1fr); }
+      }
+    @media (min-width: 600px) {
+        .cardProduct-maincontainer { grid-template-columns: repeat(4, 1fr); }
+      }
+      @media (min-width: 900px) {
+        .cards { grid-template-columns: repeat(3, 1fr); }
+      }

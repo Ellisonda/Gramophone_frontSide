@@ -13,10 +13,12 @@ export const getProductById = async (idProduct) => {
 
 
 export const modifyProduct = async(idProduct, newProductModification) => {
+    const authToken = localStorage.getItem("token");
     const res= await fetch(`http://localhost:3002/products/update/${idProduct}`, {
         method: 'PATCH',
         headers: {
-            'content-type': 'Application/json'
+            'content-type': 'Application/json',
+            "auth-token": authToken
         },
         body: JSON.stringify(
             {
@@ -30,10 +32,13 @@ export const modifyProduct = async(idProduct, newProductModification) => {
 }
 
 export const deleteProduct = async(idProduct) => {
+    const authToken = localStorage.getItem("token");
+
     const res = await fetch(`http://localhost:3002/products/${idProduct}`, {
         method: 'DELETE',
         headers: {
-            'content-type' : 'Application/json'
+            'content-type' : 'Application/json',
+            "auth-token": authToken
         },
     })
     const result = await res.json();
@@ -41,10 +46,13 @@ export const deleteProduct = async(idProduct) => {
 }
 
 export const createNewProduct = async (newProduct) => {
+    const authToken = localStorage.getItem("token");
+
     const res = await fetch('http://localhost:3002/products/addProduct', {
         method: 'POST', 
         headers: {
-            'content-type' : 'Application/json'
+            'content-type' : 'Application/json',
+            "auth-token": authToken
         },
         body: JSON.stringify({
             ...newProduct

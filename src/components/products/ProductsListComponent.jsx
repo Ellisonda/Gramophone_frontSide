@@ -89,32 +89,44 @@ useEffect(() => {
   return (
     <div>
         <div className="productList-header">
-            <h3>Aquí te listamos los mejores festivales de musica a lo largo y ancho del mundo:</h3>
+            <div className="hero-banner" id="hero-banner">
+                <div className="text-banner">
+                    <h2>Bienvenido a <span>Gramophone</span> al mejor sitio para los amantes de la música. Relajate y sigue al reno.</h2>
+                </div>
+                <div className="img-banner"></div>
+
+            </div>
+
+            <div className="search-create-panel">
+                            <div>
+                                <span>Filtrar por estilo: </span>
+                                <input type="text" onChange={(e) => searchStyle(e.target.value)}/>
+                            </div>
+                            {userRole === 'admin' && (<div> <button onClick={goCreation}>Introducir festival</button></div>)}
+                        </div>
+
         </div>
         {/*  */}
-        <div>
-                <span>Buscar: </span>
-                <input type="text" onChange={(e) => searchStyle(e.target.value)}/>
-            </div>
+        
             {/*  */}
-        <div>
+        <div className="cardProduct-maincontainer">
             {
                 !products ? <div>Cargando festivales...</div>
                 : (
                     <>
+                        
+                        
                     
-                        {userRole === 'admin' && (<div> <button onClick={goCreation}>Introducir festival</button></div>)}
                     
-                    
-                    <Row xs={1} md={2} lg={4} className="cardProduct-container g-5 p-5">
-        {/* //? He importado cardgroup y card desde la libreria de react-bootstrap */}
+                    {/* <Row xs={1} md={2} lg={4} className="cardProduct-container g-4">
+        
                         {
                             products.map((p, idx)=> (
-                                <Col key={idx}>
-                                    <Card >
-                                        <Card.Img variant="top" src={p.url_imagen_localidad} />
+                                <Col style={{display:'flex', justifyContent:'center', marginBottom:'2rem'}} key={idx}>
+                                    <Card style={{ width: '18rem' , height: '20rem'}}>
+                                        <Card.Img style={{ height: '10rem' }} variant="top" src={p.url_imagen_localidad} />
                                         <Card.Body>
-                                            <Card.Title>{p.nombre}</Card.Title>
+                                            <Card.Title style={{ fontWeight:'bolder'}}>{p.nombre}</Card.Title>
                                             <Card.Text>
                                                 {p.localidad}
                                             </Card.Text>
@@ -129,7 +141,30 @@ useEffect(() => {
                                 </Col>
                             ))
                         }
-                        </Row>
+                        </Row> */}
+
+                        {
+                            products.map((p, idx)=> (
+                                
+                                    <Card className="card" key={idx} style={{ width: '18rem' , height: '20rem'}}>
+                                        <Card.Img style={{ height: '10rem' }} variant="top" src={p.url_imagen_localidad} />
+                                        <Card.Body>
+                                            <Card.Title style={{ fontWeight:'bolder'}}>{p.nombre}</Card.Title>
+                                            <Card.Text>
+                                                {p.localidad}
+                                            </Card.Text>
+                                            <Card.Footer>
+                                                <small className="text-muted">{p.estilo_musica}</small>
+                                                <button onClick={()=>goInfo(p._id)}>+ Info</button>
+                                                
+                                                
+                                            </Card.Footer>
+                                        </Card.Body>
+                                    </Card>
+                               
+                            ))
+                        }
+
                         </>
                 )
             }

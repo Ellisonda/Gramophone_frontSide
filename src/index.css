@@ -13,6 +13,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --logo-bg-color: #F2B00A;
+  --dark-bg-color: #343131;
+  --header-bg-color: #f5bfac;
+    --banner-bg-color: #E0A75E;
+    --products-bg-color: #FFF9C9;
 }
 
 a {
@@ -31,7 +37,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   justify-content: center;
-  background-color: #B95836;
+  background-color: #a35d1f;
 }
 
 h1 {
@@ -44,18 +50,32 @@ button {
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
+  /* font-weight: 500; */
+  /* font-family: inherit; */
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  letter-spacing: 0.1rem;
+
+
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+
+  /* font-family: "Lobster Two", sans-serif;
+  font-weight: 700;
+  font-style: normal; */
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--logo-bg-color);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+
+  background-color: var(--logo-bg-color);
+        color: white;
 }
 
 @media (prefers-color-scheme: light) {

@@ -3,7 +3,7 @@
 const ErrorGeneralComponent = () => {
   return (
     <div>
-        <h3 style={{color:'white', backgroundColor:'GrayText', border:1}}>Something big went wrong. Try again</h3>
+        <h4 style={{color:'white', backgroundColor:'#D9CE3F', border:1, borderRadius:5}}>Missing important info</h4>
     </div>
   )
 }

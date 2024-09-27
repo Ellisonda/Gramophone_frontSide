@@ -18,12 +18,12 @@ const ContactComponent = () => {
         addNewMail(newMail)
     }
   return (
-    <Container fluid className='newsletter-container'>
-        <div className='text-newsletter'>
+    <Container fluid className='newsletter-container' >
+        <div className='text-newsletter' id='contact-area'>
             <div><h3>Apuntante a nuestra maravillosa newsletter, y de esta manera nuestro
                 reno entrenado con IA y alimentado con cariño te avisará
                 siempre que aparezcan nuevos festivales.</h3></div>
-            <div>
+            <div className='email-area'>
                 {/* <FloatingLabel
                     controlId="floatingInput"
                     label="Email address"

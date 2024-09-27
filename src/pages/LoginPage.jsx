@@ -72,28 +72,29 @@ const LoginPage = () => {
     //     })
     // }
   return (
-    <div>
+    <div className='login-container'>
        
         
         {
                 !user? (
                     flagLogin
                     ? (
-                        <div>
+                        <div style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', gap: 10}}>
                              <header>
                                 <img src={Gramophone_Reno}/>
                             </header>
 
-                        <h3>Get into the rithm</h3> 
-                        
+                        <div style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'flex-end', gap: 10}}>
                             <div>
-                                <span>Email: </span>
+                                <span style={{fontWeight:'bold'}}>Email: </span>
                                 <input type="text" placeholder="Email" name='email' onChange={(e)=>handlerLoginInfo(e.target.name, e.target.value)}/>
                             </div>
                             <div>
-                            <span>Password: </span>
+                            <span style={{fontWeight:'bold'}}>Password: </span>
                             <input type="password" name='password' placeholder="Password" onChange={(e)=>handlerLoginInfo(e.target.name, e.target.value)}/>
                             </div> 
+
+                        </div>
                             <div>
                                 <button onClick={doLogin}>Log in</button> 
                             </div>
@@ -124,28 +125,28 @@ const LoginPage = () => {
                                             }
 
                                                 <div style={{display:'flex', flexDirection: 'column', gap: 5}}>
-                                                    <span name='name'>Name</span>
+                                                    <span name='name' style={{fontWeight:'bold'}}>Name</span>
                                                     {
                                                         errors && <ErrorMessage name='name' component={ErrorComponent}/>
                                                     }
                                                     <Field type="text" placeholder='name' name='name' ></Field>
                                                 </div>
                                                 <div style={{display:'flex', flexDirection: 'column', gap: 5}}>
-                                                    <span>Username</span>
+                                                    <span style={{fontWeight:'bold'}}>Username</span>
                                                     {
                                                         errors && <ErrorMessage name='username' component={ErrorComponent}/>
                                                     }
                                                     <Field type="text" placeholder='username' name='username'  ></Field>
                                                 </div>
                                                 <div style={{display:'flex', flexDirection: 'column', gap: 5}}>
-                                                    <span>Email</span>
+                                                    <span style={{fontWeight:'bold'}}>Email</span>
                                                     {
                                                         errors && <ErrorMessage name='email' component={ErrorComponent}/>
                                                     }
                                                     <Field type="text" placeholder='email' name='email' ></Field>
                                                 </div>
                                                 <div style={{display:'flex', flexDirection: 'column', gap: 5}}>
-                                                    <span>Password</span>
+                                                    <span style={{fontWeight:'bold'}}>Password</span>
                                                     {
                                                         errors && <ErrorMessage name='password' component={ErrorComponent}/>
                                                     }

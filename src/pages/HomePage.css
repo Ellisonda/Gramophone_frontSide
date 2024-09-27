@@ -1,31 +1,77 @@
-header {
-    background-color: #b95936;
-    max-width: 100%;
+
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+    button {
+        background-color: transparent;
+
+    }
+    button:focus {
+        background-color: var(--logo-bg-color);
+        color: white;
+    }
     img {
         width: 100%;
         height: 15rem;
     }
 }
 
+.navbar-container {
+    max-width: 100%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    img {
+        width: 100%;
+        height: 3rem;
+    }
+}
 
 .newsletter-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 15px;
-    height: 70vh;
+    /* height: 70vh; */
     width: 100%;
     max-width: 100%;
 
-    background-color: #4A4947;
+    background-color: var(--dark-bg-color);
     padding: 4rem;
     /* margin: 0; */
     justify-content: space-around;
     align-items: center;
-}
-.text-newsletter {
-    max-width: 50%;
-    
-    color: #FFF5E4;
+    .text-newsletter {
+        max-width: 30%;
+        display: flex;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+        color: #FFF5E4;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.5rem;
+    }
+    .email-area {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        button {
+            background-color: transparent;
+            color: var(--logo-bg-color)
+        }
+    }
 }
 .logo-newsletter {
     background-image: url(../assets/images/Gramophone_Line.png);
@@ -35,5 +81,14 @@ header {
     /* max-width: 100%; */
     /* min-width: 100px; */
     width: 45rem;
-    height: 20rem;
+    height: 13rem;
 }
+
+.creation-container {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    padding: 2rem;
+}
+

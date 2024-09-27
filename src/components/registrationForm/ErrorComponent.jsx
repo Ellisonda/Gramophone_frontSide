@@ -4,7 +4,7 @@
 const ErrorComponent = (props) => {
     const {children} = props
   return (
-    <div style={{color:'white', backgroundColor:'GrayText', border:1}}>{children}</div>
+    <div style={{color:'white', backgroundColor:'GrayText', border:1, borderRadius:5}}>{children}</div>
   )
 }
 

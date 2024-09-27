@@ -23,7 +23,7 @@ const ProductCreationComponent = () => {
         navigate('/home')
     }
   return (
-    <div>
+    <div className='creation-container'>
         <div>
             <h2>Introduce en nuestra base de datos un nuevo festival:</h2>
             <button onClick={goHomePage}>Volver</button>
