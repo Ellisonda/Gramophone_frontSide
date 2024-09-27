@@ -1,7 +1,10 @@
 header {
-    background-color: #E45826;
+    background-color: #b95936;
     max-width: 100%;
-
+    img {
+        width: 100%;
+        height: 15rem;
+    }
 }
 
 

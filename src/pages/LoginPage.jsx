@@ -7,7 +7,7 @@ import { useState } from "react";
 import HomePage from "./HomePage";
 import ErrorGeneralComponent from '../components/registrationForm/ErrorGeneralComponent';
 import ErrorComponent from '../components/registrationForm/ErrorComponent';
-
+import Gramophone_Reno from '../assets/images/Gramophone_Reno.png';
 
 const initialValuesForm = {
     name:'', 
@@ -81,8 +81,7 @@ const LoginPage = () => {
                     ? (
                         <div>
                              <header>
-                                <h1>Gramophone</h1>
-                                <h2>Find your music, find yourself and ride a reno.</h2>
+                                <img src={Gramophone_Reno}/>
                             </header>
 
                         <h3>Get into the rithm</h3> 
