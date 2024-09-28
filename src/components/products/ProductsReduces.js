@@ -1,4 +1,4 @@
-import  {LOAD_PRODUCTS, GET_PRODUCT_BY_ID} from "./ProductActions";
+import  {LOAD_PRODUCTS, GET_PRODUCT_BY_ID, GET_PRODUCT_BY_STYLE} from "./ProductActions";
 
 
 const initialState = {
@@ -18,6 +18,11 @@ const productReducer = (state= initialState,action) => {
             ...state,
             product: action.payload.product
         }
+        case GET_PRODUCT_BY_STYLE:
+            return {
+                ...state,
+                products: action.payload.products
+            }
         default:
             return state
     }

@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
-import { getAllProducts } from "../../core/services/productsService";
-import { loadProducts } from "./ProductActions";
+import { getAllProducts, getProductByStyle } from "../../core/services/productsService";
+import { loadByStyle, loadProducts } from "./ProductActions";
 import { useEffect, useState } from "react";
 import './ProductListComponent.css'
 import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import Form from 'react-bootstrap/Form';
+
 
 
 const ProductsListComponent = () => {
@@ -14,8 +14,9 @@ const ProductsListComponent = () => {
     const dispatch = useDispatch();
     const products = useSelector((state)=>state.productReducer.products);
     const user = useSelector((state)=> state.userReducer.user)
-    const [productsFiltered, setProductsFiltered] = useState()
-    const [searchInfo, setSearchInfo] = useState();
+    // const [productsFiltered, setProductsFiltered] = useState()
+    // const [searchInfo, setSearchInfo] = useState();
+    const [selectedStyle, setSelectedStyle] = useState('')
     const navigate= useNavigate();
     
 
@@ -46,38 +47,50 @@ const ProductsListComponent = () => {
     }
 //? Buscador con filtro
 
-const filter = (nombre, localidad, estilo_musica) => {
-    const productsFilteredAux = products.filter(p => (p.nombre.toLowerCase().includes(nombre) || p.localidad.toLowerCase().includes(localidad) || p.estilo_musica.toLowerCase().includes(estilo_musica)) )
-    setProductsFiltered(productsFilteredAux)
-}
-const searchStyle = () => {
-
-}
-
-const searchHandler = () => {
-    setSearchInfo({
-        ...searchInfo,
-        [name]: value
-    })
-}
-
-//!BORRAR const doLogin = async () => {
-//     const userInfo = await loginFetch(loginInfo.email, loginInfo.password)
-//     dispatch(doLoginActions({
-//         user: userInfo
-//     }))
-//     console.log('Usuario logeado')
+// const filter = (nombre, localidad, estilo_musica) => {
+//     const productsFilteredAux = products.filter(p => (p.nombre.toLowerCase().includes(nombre) || p.localidad.toLowerCase().includes(localidad) || p.estilo_musica.toLowerCase().includes(estilo_musica)) )
+//     setProductsFiltered(productsFilteredAux)
 // }
-// !BORARconst handlerLoginInfo = (name, value) => {
-//     setLoginInfo({
-//         ...loginInfo,
+
+//////////////////
+// const selectedHandler = () => {
+//     setSelectedStyle({
+//         ...selectedStyle,
 //         [name]: value
 //     })
 // }
 
+
+
+const loadSelectedList = async () => {
+    try {
+        if(selectedStyle){
+        const selectedAux = await getProductByStyle(selectedStyle)
+        dispatch(
+            loadByStyle({
+                products: selectedAux
+            })
+        ) }
+        else {
+            loadProductList()
+        }
+    } catch (error) {
+        console.error("Error loading selected products:", error);
+    }
+   
+}
+//////////////////////
+// const searchHandler = () => {
+//     setSearchInfo({
+//         ...searchInfo,
+//         [name]: value
+//     })
+// }
+
+
 useEffect(() => {
-    setProductsFiltered(products)
-},[products])
+    loadSelectedList()
+},[selectedStyle])
 
 //?
 
@@ -100,7 +113,13 @@ useEffect(() => {
             <div className="search-create-panel">
                             <div>
                                 <span>Filtrar por estilo: </span>
-                                <input type="text" onChange={(e) => searchStyle(e.target.value)}/>
+                                {/* <input type="text" onChange={(e) => searchStyle(e.target.value)}/> */}
+                                <Form.Select aria-label="Default select example" onChange={e=> setSelectedStyle(e.target.value)}>
+                                    <option value=''>Mostrar todos</option>
+                                    <option value="Rock">Rock</option>
+                                    <option value="Folk">Folk</option>
+                                    <option value="Indie">Indie</option>
+                                </Form.Select>
                             </div>
                             {userRole === 'admin' && (<div> <button onClick={goCreation}>Introducir festival</button></div>)}
                         </div>
