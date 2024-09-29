@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getUserInfoById, modifyUser } from "../../core/services/userServices";
 import { loadUser } from "../user/UserActions";
 import { useEffect, useState } from "react";
@@ -11,8 +11,7 @@ const ProfileComponent = () => {
     const [newProfileModification, setNewProfileModification]= useState();
 
 
-    // const {state} = useLocation();
-    // const {idUser} = state;
+   
     const user = useSelector((state)=> state.userReducer.user)
     const [isEditing, setIsEditing] = useState(undefined);
     const navigate= useNavigate();

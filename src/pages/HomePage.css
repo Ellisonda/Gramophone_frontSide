@@ -1,110 +1,102 @@
-
 .login-maincontainer {
-    background-color: var(--products-bg-color);
+  background-color: var(--products-bg-color);
 
-    width: 100vw;
-    
-    min-height: 100vh;
-    height: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100vw;
+
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 .login-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: "Montserrat", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: <weight>;
-            font-style: normal;
-    button {
-        background-color: transparent;
-
-    }
-    button:focus {
-        background-color: var(--logo-bg-color);
-        color: white;
-    }
-    .logo-login {
-        width: 400px;
-        height: 150px;
-       
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  button {
+    background-color: transparent;
+  }
+  button:focus {
+    background-color: var(--logo-bg-color);
+    color: white;
+  }
+  .logo-login {
+    width: 450px;
+    max-width: 90vw;
+    height: 150px;
+  }
 }
 
 .navbar-container {
-    max-width: 100%;
-    font-size: 1.5rem;
-    font-weight: 700;
-    img {
-        width: 100%;
-        height: 3rem;
-    }
+  max-width: 100%;
+  font-size: 1.5rem;
+  font-weight: 700;
+  img {
+    width: 100%;
+    height: 3rem;
+  }
 }
 
 .newsletter-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 100%;
+  max-width: 100vw;
+
+  background-color: var(--dark-bg-color);
+  padding: 4rem;
+  justify-content: space-around;
+  align-items: center;
+  .text-newsletter {
+    max-width: 30%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 15px;
-    /* height: 70vh; */
-    width: 100%;
-    max-width: 100%;
-
-    background-color: var(--dark-bg-color);
-    padding: 4rem;
-    /* margin: 0; */
-    justify-content: space-around;
-    align-items: center;
-    .text-newsletter {
-        max-width: 30%;
-        display: flex;
-        font-family: "Montserrat", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: <weight>;
-        font-style: normal;
-        color: #FFF5E4;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        font-size: 1.5rem;
-    }
-    .email-area {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 1rem;
-        justify-content: center;
-        align-items: center;
-        button {
-            background-color: transparent;
-            color: var(--logo-bg-color)
-        }
-    }
-    @media (width <= 500px ) {
-            
-        .textarea-newsletter {
-            width: 70vw;
-        }
-    }
-}
-.logo-newsletter {
-    background-image: url(../assets/images/Gramophone_Line.png);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* max-width: 100%; */
-    /* min-width: 100px; */
-    width: 45rem;
-    height: 13rem;
-}
-
-.creation-container {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: <weight>;
     font-style: normal;
-    padding: 2rem;
+    color: #fff5e4;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+  }
+  .email-area {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    button {
+      background-color: transparent;
+      color: var(--logo-bg-color);
+    }
+  }
+  @media (width <= 500px) {
+    .textarea-newsletter {
+      width: 70vw;
+    }
+  }
+}
+.logo-newsletter {
+  background-image: url(../assets/images/Gramophone_Line.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 45rem;
+  height: 13rem;
 }
 
+.creation-container {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  padding: 2rem;
+}

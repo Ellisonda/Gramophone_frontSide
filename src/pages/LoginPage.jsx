@@ -23,9 +23,7 @@ const userSchema = Yup.object({
      password:Yup.string().required().min(8, 'Pass need to be larger than 8 characters')
 })
 
-const submitHandler = () => {
-    alert('Registration succesfull!')
-}
+
 
 
 
@@ -37,7 +35,6 @@ const LoginPage = () => {
 
     const [flagLogin, setFlagLogin] = useState(true);
     const [loginInfo, setLoginInfo] = useState({})
-    const [registerInfo, setRegisterInfo] = useState({});
 
     
 
@@ -154,8 +151,7 @@ const LoginPage = () => {
                                                     </div>
                                                     
                                             </Form>
-                                            // onClick={doRegister}
-                                            // onChange={(e) => handlerRegisterInfo(e.target.name, e.target.value)}
+                                            
                                         )}        
                                     </Formik>
 

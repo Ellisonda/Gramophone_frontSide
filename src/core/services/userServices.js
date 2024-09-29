@@ -15,7 +15,6 @@ export const loginFetch = async (email, password) => {
     
         const data= await res.json();
         console.log(data)
-        // return data.user;
 
         if(data){
             localStorage.setItem('token', data.token);
