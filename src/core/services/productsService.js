@@ -76,5 +76,5 @@ export const createNewProduct = async (newProduct) => {
 export const getProductByStyle = async (musicStyle) => {
     const res= await fetch(`http://localhost:3002/products/musicStyle/${musicStyle}`);
     const result = await res.json()
-    return result.products
+    return result.product
 }

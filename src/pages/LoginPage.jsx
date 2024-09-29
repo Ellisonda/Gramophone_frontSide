@@ -65,12 +65,7 @@ const LoginPage = () => {
         })
     }
 
-    // const handlerRegisterInfo = (name, value) => {
-    //     setRegisterInfo({
-    //         ...registerInfo,
-    //         [name]: value
-    //     })
-    // }
+    
   return (
     <div className='login-container'>
        

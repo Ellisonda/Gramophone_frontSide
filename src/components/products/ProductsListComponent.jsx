@@ -62,33 +62,31 @@ const ProductsListComponent = () => {
 
 
 
-const loadSelectedList = async () => {
-    try {
-        if(selectedStyle){
-        const selectedAux = await getProductByStyle(selectedStyle)
-        dispatch(
-            loadByStyle({
-                products: selectedAux
-            })
-        ) }
-        else {
-            loadProductList()
-        }
-    } catch (error) {
-        console.error("Error loading selected products:", error);
-    }
-   
-}
+
 //////////////////////
-// const searchHandler = () => {
-//     setSearchInfo({
-//         ...searchInfo,
-//         [name]: value
-//     })
-// }
+
 
 
 useEffect(() => {
+
+    const loadSelectedList = async () => {
+        try {
+            if(selectedStyle){
+            const selectedAux = await getProductByStyle(selectedStyle)
+            dispatch(
+                loadByStyle({
+                    products: selectedAux
+                })
+            ) }
+            else {
+                loadProductList()
+            }
+        } catch (error) {
+            console.error("Error loading selected products:", error);
+        }
+       
+    }
+
     loadSelectedList()
 },[selectedStyle])
 
