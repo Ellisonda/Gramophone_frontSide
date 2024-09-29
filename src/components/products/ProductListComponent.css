@@ -111,6 +111,11 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (min-width: 900px) {
+  .cardProduct-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 @media (width <= 900px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
