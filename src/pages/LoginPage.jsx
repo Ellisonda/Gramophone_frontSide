@@ -67,115 +67,118 @@ const LoginPage = () => {
 
     
   return (
-    <div className='login-container'>
-       
+    <div className='login-maincontainer'>
+
+        <div className='login-container'>
         
-        {
-                !user? (
-                    flagLogin
-                    ? (
-                        <div style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', gap: 10}}>
-                             <header>
-                                <img src={Gramophone_Reno}/>
-                            </header>
+            
+            {
+                    !user? (
+                        flagLogin
+                        ? (
+                            <div style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', gap: 10}}>
+                                <header>
+                                    <img className='logo-login' src={Gramophone_Reno}/>
+                                </header>
 
-                        <div style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'flex-end', gap: 10}}>
-                            <div>
-                                <span style={{fontWeight:'bold'}}>Email: </span>
-                                <input type="text" placeholder="Email" name='email' onChange={(e)=>handlerLoginInfo(e.target.name, e.target.value)}/>
-                            </div>
-                            <div>
-                            <span style={{fontWeight:'bold'}}>Password: </span>
-                            <input type="password" name='password' placeholder="Password" onChange={(e)=>handlerLoginInfo(e.target.name, e.target.value)}/>
-                            </div> 
-
-                        </div>
-                            <div>
-                                <button onClick={doLogin}>Log in</button> 
-                            </div>
-                            <div>
-                                <button onClick={() => setFlagLogin(false)}>Join us?</button>
+                            <div style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'flex-end', gap: 10}}>
+                                <div>
+                                    <span style={{fontWeight:'bold'}}>Email: </span>
+                                    <input type="text" placeholder="Email" name='email' onChange={(e)=>handlerLoginInfo(e.target.name, e.target.value)}/>
+                                </div>
+                                <div>
+                                <span style={{fontWeight:'bold'}}>Password: </span>
+                                <input type="password" name='password' placeholder="Password" onChange={(e)=>handlerLoginInfo(e.target.name, e.target.value)}/>
+                                </div> 
 
                             </div>
+                                <div>
+                                    <button onClick={doLogin}>Log in</button> 
+                                </div>
+                                <div>
+                                    <button onClick={() => setFlagLogin(false)}>Join us?</button>
+
+                                </div>
+                                
+            
                             
-        
+                            <hr />
+                        </div>
                         
-                        <hr />
-                    </div>
-                    
+                        )
+                        : (
+                            <div>
+                                <div>
+                                    <h3> Here for first time? Sign up now!</h3>
+                                    <Formik
+                                        initialValues={initialValuesForm}
+                                        onSubmit={doRegister}
+                                        validationSchema={userSchema}
+                                        >
+                                        {({errors}) => (
+                                            <Form style={{display:'flex', flexDirection: 'column', gap: 5}}>
+                                                {
+                                                    errors && <ErrorMessage name='name' component={ErrorGeneralComponent}/>
+                                                }
+
+                                                    <div style={{display:'flex', flexDirection: 'column', gap: 5}}>
+                                                        <span name='name' style={{fontWeight:'bold'}}>Name</span>
+                                                        {
+                                                            errors && <ErrorMessage name='name' component={ErrorComponent}/>
+                                                        }
+                                                        <Field type="text" placeholder='name' name='name' ></Field>
+                                                    </div>
+                                                    <div style={{display:'flex', flexDirection: 'column', gap: 5}}>
+                                                        <span style={{fontWeight:'bold'}}>Username</span>
+                                                        {
+                                                            errors && <ErrorMessage name='username' component={ErrorComponent}/>
+                                                        }
+                                                        <Field type="text" placeholder='username' name='username'  ></Field>
+                                                    </div>
+                                                    <div style={{display:'flex', flexDirection: 'column', gap: 5}}>
+                                                        <span style={{fontWeight:'bold'}}>Email</span>
+                                                        {
+                                                            errors && <ErrorMessage name='email' component={ErrorComponent}/>
+                                                        }
+                                                        <Field type="text" placeholder='email' name='email' ></Field>
+                                                    </div>
+                                                    <div style={{display:'flex', flexDirection: 'column', gap: 5}}>
+                                                        <span style={{fontWeight:'bold'}}>Password</span>
+                                                        {
+                                                            errors && <ErrorMessage name='password' component={ErrorComponent}/>
+                                                        }
+                                                        <Field type="password" placeholder='password' name='password' ></Field>
+                                                    </div>
+                                                    <div>
+                                                        <button type='submit'  >Sign up</button>
+                                                    </div>
+                                                    
+                                            </Form>
+                                            // onClick={doRegister}
+                                            // onChange={(e) => handlerRegisterInfo(e.target.name, e.target.value)}
+                                        )}        
+                                    </Formik>
+
+                                </div>
+                                <div>
+                                    <button onClick={() => setFlagLogin(true)}>Go back to login</button>
+
+                                </div>
+                            </div>
+                        )
                     )
                     : (
-                        <div>
-                            <div>
-                                <h3> Here for first time? Sign up now!</h3>
-                                <Formik
-                                    initialValues={initialValuesForm}
-                                    onSubmit={doRegister}
-                                    validationSchema={userSchema}
-                                    >
-                                    {({errors}) => (
-                                        <Form style={{display:'flex', flexDirection: 'column', gap: 5}}>
-                                             {
-                                                errors && <ErrorMessage name='name' component={ErrorGeneralComponent}/>
-                                            }
-
-                                                <div style={{display:'flex', flexDirection: 'column', gap: 5}}>
-                                                    <span name='name' style={{fontWeight:'bold'}}>Name</span>
-                                                    {
-                                                        errors && <ErrorMessage name='name' component={ErrorComponent}/>
-                                                    }
-                                                    <Field type="text" placeholder='name' name='name' ></Field>
-                                                </div>
-                                                <div style={{display:'flex', flexDirection: 'column', gap: 5}}>
-                                                    <span style={{fontWeight:'bold'}}>Username</span>
-                                                    {
-                                                        errors && <ErrorMessage name='username' component={ErrorComponent}/>
-                                                    }
-                                                    <Field type="text" placeholder='username' name='username'  ></Field>
-                                                </div>
-                                                <div style={{display:'flex', flexDirection: 'column', gap: 5}}>
-                                                    <span style={{fontWeight:'bold'}}>Email</span>
-                                                    {
-                                                        errors && <ErrorMessage name='email' component={ErrorComponent}/>
-                                                    }
-                                                    <Field type="text" placeholder='email' name='email' ></Field>
-                                                </div>
-                                                <div style={{display:'flex', flexDirection: 'column', gap: 5}}>
-                                                    <span style={{fontWeight:'bold'}}>Password</span>
-                                                    {
-                                                        errors && <ErrorMessage name='password' component={ErrorComponent}/>
-                                                    }
-                                                    <Field type="password" placeholder='password' name='password' ></Field>
-                                                </div>
-                                                <div>
-                                                    <button type='submit'  >Sign up</button>
-                                                </div>
-                                                
-                                        </Form>
-                                        // onClick={doRegister}
-                                        // onChange={(e) => handlerRegisterInfo(e.target.name, e.target.value)}
-                                    )}        
-                                </Formik>
-
-                            </div>
-                            <div>
-                                 <button onClick={() => setFlagLogin(true)}>Go back to login</button>
-
-                            </div>
-                        </div>
+                        <HomePage/>
                     )
-                )
-                : (
-                    <HomePage/>
-                )
-        }
+            }
 
 
-        
-        
-        <footer>
-            <p>2024. Gramophone Team. All rights reserved.</p>
-        </footer>
+            
+            
+            <footer>
+                <p>2024. Gramophone Team. All rights reserved.</p>
+            </footer>
+        </div>
     </div>
 
   )

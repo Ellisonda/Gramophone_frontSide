@@ -9,11 +9,11 @@
         margin: 2rem;
         justify-content: center;
         align-items: center;
+        padding-top: 3rem;
         .text-banner {
             width: 100vh;
             display: flex;
-        /* align-items: start; */
-            
+            color: white;
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
             font-weight: <weight>;
@@ -34,6 +34,14 @@
             width: 30%;
             height: 60vh;
         }
+        @media (width <= 500px ) {
+            
+            .img-banner {
+                width: 50%;
+                height: 40vh;
+
+            }
+        }
     }
 
     .search-create-panel {
@@ -48,6 +56,7 @@
     }
 
 }
+
 .cardProduct-container {
     padding: 20rem !important;
     /* max-width: 100%; */
@@ -58,11 +67,18 @@
             font-style: normal;
     }
 
-    
     .info-maincontainer {
-        /* background-color: #F5CCA0; */
-        width: 100vh;
+        background-color: var(--logo-bg-color);
+        width: 100vw;
         /* height: 100vh; */
+    }
+    .info-container {
+        background-color: var(--logo-bg-color);
+        width: 100vh;
+        max-width: fit-content;
+        height: 100vh;
+        display: flex;
+        align-items: center;
         font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
             font-weight: <weight>;
@@ -70,7 +86,8 @@
     }
 
 
-    .cardProduct-maincontainer {
+
+    .cardProduct-container {
         display: grid !important;
         margin: 0 auto;
         display: grid;
@@ -78,14 +95,20 @@
         justify-items: center;
         max-width: fit-content;
         padding-block: 3rem;
+        max-width: 100vw;
         /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
     }
     @media (min-width: 400px) {
-        .cardProduct-maincontainer { grid-template-columns: repeat(1, 1fr); }
+        .cardProduct-container { grid-template-columns: repeat(1, 1fr); }
       }
     @media (min-width: 600px) {
-        .cardProduct-maincontainer { grid-template-columns: repeat(4, 1fr); }
+        .cardProduct-container { grid-template-columns: repeat(4, 1fr); }
       }
       @media (min-width: 900px) {
         .cards { grid-template-columns: repeat(3, 1fr); }
+      }
+
+
+      .creation-container {
+        background-color: var(--products-bg-color);
       }

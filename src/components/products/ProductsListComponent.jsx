@@ -99,8 +99,8 @@ useEffect(() => {
 
   return (
     <div>
-        <div className="productList-header">
-            <div className="hero-banner" id="hero-banner">
+        <div className="productList-header" >
+            <div className="hero-banner" id="hero-banner" >
                 <div className="text-banner">
                     <h2>Bienvenido a <span>Gramophone</span> al mejor sitio para los amantes de la música. Relajate y sigue al reno.</h2>
                 </div>
@@ -108,8 +108,8 @@ useEffect(() => {
 
             </div>
 
-            <div className="search-create-panel">
-                            <div>
+            <div className="search-create-panel" >
+                            <div style={{display:'flex', flexDirection:'row'}}>
                                 <span>Filtrar por estilo: </span>
                                 {/* <input type="text" onChange={(e) => searchStyle(e.target.value)}/> */}
                                 <Form.Select aria-label="Default select example" onChange={e=> setSelectedStyle(e.target.value)}>
@@ -117,6 +117,8 @@ useEffect(() => {
                                     <option value="Rock">Rock</option>
                                     <option value="Folk">Folk</option>
                                     <option value="Indie">Indie</option>
+                                    <option value="Fusion">Fusion</option>
+
                                 </Form.Select>
                             </div>
                             {userRole === 'admin' && (<div> <button onClick={goCreation}>Introducir festival</button></div>)}
@@ -126,7 +128,7 @@ useEffect(() => {
         {/*  */}
         
             {/*  */}
-        <div className="cardProduct-maincontainer">
+        <div className="cardProduct-container">
             {
                 !products ? <div>Cargando festivales...</div>
                 : (

@@ -20,7 +20,7 @@ const ContactComponent = () => {
   return (
     <Container fluid className='newsletter-container' >
         <div className='text-newsletter' id='contact-area'>
-            <div><h3>Apuntante a nuestra maravillosa newsletter, y de esta manera nuestro
+            <div className='textarea-newsletter'><h3>Apuntante a nuestra maravillosa newsletter, y de esta manera nuestro
                 reno entrenado con IA y alimentado con cariño te avisará
                 siempre que aparezcan nuevos festivales.</h3></div>
             <div className='email-area'>

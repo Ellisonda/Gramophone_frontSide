@@ -73,7 +73,7 @@ const goLogOut = () => {
             <Nav.Link href="#contact-area">Contact</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets" style={{color:'green'}}>@{user.name}</Nav.Link>
+            <Nav.Link  style={{color:'green'}}>@{user.name}</Nav.Link>
             
             <Nav.Link eventKey={2} href="/">
               Log out
