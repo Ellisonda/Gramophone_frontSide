@@ -8,7 +8,7 @@ import ProductInfoComponent from './components/productInfo/ProductInfoComponent'
 import { SignupPage } from './pages/SignupPage';
 import store from './core/redux/store/store';
 import ProductCreationComponent from './components/productCreation/ProductCreationComponent';
-import ProfileComponent from './components/profile/profileComponent';
+// import ProfileComponent from './components/profile/profileComponent';
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
           <Route path='/home' element={<HomePage/>}/>
           <Route path='/info' element={<ProductInfoComponent/>}/>
           <Route path='/creation' element={<ProductCreationComponent/>}/>
-          <Route path='/profile' element={<ProfileComponent/>}/>
+          {/* <Route path='/profile' element={<ProfileComponent/>}/> */}
 
           
         </Routes>
