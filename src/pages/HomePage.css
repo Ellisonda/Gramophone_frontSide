@@ -58,7 +58,7 @@
     display: flex;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
-    font-weight: <weight>;
+    font-weight: weight;
     font-style: normal;
     color: #fff5e4;
     flex-direction: column;
@@ -96,7 +96,7 @@
 .creation-container {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight: <weight>;
+  font-weight: weight;
   font-style: normal;
   padding: 2rem;
 }
